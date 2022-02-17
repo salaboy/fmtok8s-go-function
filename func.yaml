@@ -1,0 +1,25 @@
+version: 0.19.0
+name: fmtok8s-go-function
+namespace: ""
+runtime: go
+registry: ""
+image: docker.io/salaboy/fmtok8s-go-function:latest
+imageDigest: sha256:18cc9258592977591ba04f6364e3bb3a352c03b743e2346b74af719e3593d0cb
+builder: gcr.io/paketo-buildpacks/builder:base
+builders:
+  base: gcr.io/paketo-buildpacks/builder:base
+  default: gcr.io/paketo-buildpacks/builder:base
+  full: gcr.io/paketo-buildpacks/builder:full
+buildpacks:
+- paketo-buildpacks/go-dist
+- ghcr.io/boson-project/go-function-buildpack:tip
+volumes: []
+buildEnvs: []
+envs: []
+annotations: {}
+options: {}
+labels: []
+healthEndpoints:
+  liveness: /health/liveness
+  readiness: /health/readiness
+created: 2022-02-16T08:56:29.370008Z
