@@ -13,6 +13,7 @@ curl -v -X POST -d '{"input": "hello"}' \
   -H'Content-type: application/json' \
   -H'Ce-id: 1' \
   -H'Ce-source: cloud-event-example' \
+  -H'Ce-subject: Convert to UpperCase' \
   -H'Ce-type: UppercaseRequestedEvent' \
   -H'Ce-specversion: 1.0' \
   http://localhost:8080/

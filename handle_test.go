@@ -17,6 +17,7 @@ func TestHandle(t *testing.T) {
 	event.SetID("TEST-EVENT-01")
 	event.SetType("UppercaseRequestedEvent")
 	event.SetSource("http://localhost:8080/")
+	event.SetSubject("Convert to UpperCase")
 	input := Input{}
 	input.Input = "hello"
 	event.SetData(cloudevents.ApplicationJSON, &input)
@@ -36,6 +37,9 @@ func TestHandle(t *testing.T) {
 	err = json.Unmarshal(ce.Data(), &output)
 	if err != nil {
 		t.Fatal(err)
+	}
+	if output.Operation != event.Subject(){
+		t.Errorf("The output.Operation: %v should be the same as the input event Subject: %v", output.Operation, event.Subject())
 	}
 	if output.Input != input.Input{
 		t.Errorf("The output.Input: %v should be the same as the input.Input: %v", output.Input, input.Input)
