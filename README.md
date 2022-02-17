@@ -8,23 +8,14 @@ Develop new features by adding a test to [`handle_test.go`](handle_test.go) for 
 
 Update the running analog of the function using the `func` CLI or client library, and it can be invoked using a manually-created CloudEvent:
 
-
-curl -X POST -d '{"hello": "world"}' \
--H'Content-type: application/json' \
--H'Ce-id: 1' \
--H'Ce-source: cloud-event-example' \
--H'Ce-type: dev.knative.example' \
--H'Ce-specversion: 1.0' \
-http://localhost:8080/
-
 ```console
-curl -X POST -d '{"hello": "world"}' \
+curl -v -X POST -d '{"input": "hello"}' \
   -H'Content-type: application/json' \
   -H'Ce-id: 1' \
   -H'Ce-source: cloud-event-example' \
-  -H'Ce-type: dev.knative.example' \
+  -H'Ce-type: UppercaseRequestedEvent' \
   -H'Ce-specversion: 1.0' \
-  http://myFunction.example.com/
+  http://localhost:8080/
 ```
 
 For more, see [the complete documentation]('https://github.com/knative-sandbox/kn-plugin-func/tree/main/docs')
