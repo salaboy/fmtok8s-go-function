@@ -29,7 +29,6 @@ func uppercase(event cloudevents.Event) (*event.Event, error){
 		fmt.Printf("%v\n", err)
 		return nil, err
 	}
-	fmt.Printf("%v\n", input)
 	outputEvent := cloudevents.NewEvent()
 	outputEvent.SetSource("http://example.com/uppercase")
 	outputEvent.SetType("UpperCasedEvent")
@@ -49,7 +48,7 @@ func Handle(ctx context.Context, event cloudevents.Event) (*event.Event, error) 
 	
 	// Example implementation:
 	fmt.Printf("Incoming Event: %v\n", event) // print the received event to standard output
-	if event.Type() == "uppercase" {
+	if event.Type() == "UppercaseRequestedEvent" {
 		return uppercase(event)
 	}
 	return nil, errors.New("No action for event type: " + event.Type())
